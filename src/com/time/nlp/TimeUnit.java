@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.time.enums.RangeTimeEnum;
+import com.time.util.DateUtil;
 
 /**
  * <p>
@@ -218,7 +219,7 @@ public class TimeUnit
 			isAllDayTime = false;
 		}
 		
-		rule = "早";
+		rule = "早上|早晨|早间|晨间|今早|明早";
 		pattern = Pattern.compile(rule);
 		match = pattern.matcher(Time_Expression);
 		if(match.find()){
@@ -266,7 +267,7 @@ public class TimeUnit
 			isAllDayTime = false;
 		}
 		
-		rule = "晚";
+		rule = "晚上|夜间|夜里|今晚|明晚";
 		pattern = Pattern.compile(rule);
 		match = pattern.matcher(Time_Expression);
 		if(match.find()){
@@ -974,9 +975,11 @@ public class TimeUnit
 	    Calendar c = Calendar.getInstance();
 	    if (this.normalizer.getTimeBase() != null) {
 	      String[] ini = this.normalizer.getTimeBase().split("-");
-	      c.set(Integer.valueOf(ini[0]).intValue(), Integer.valueOf(ini[1]).intValue(), Integer.valueOf(ini[2]).intValue()
+	      c.set(Integer.valueOf(ini[0]).intValue(), Integer.valueOf(ini[1]).intValue()-1, Integer.valueOf(ini[2]).intValue()
 	    	  , Integer.valueOf(ini[3]).intValue(), Integer.valueOf(ini[4]).intValue(), Integer.valueOf(ini[5]).intValue());
+	      System.out.println(DateUtil.formatDateDefault(c.getTime()));
 	    }
+	    
 		int curTime = c.get(TUNIT_MAP.get(checkTimeIndex));
 		if(curTime < _tp.tunit[checkTimeIndex]){
 			return;
@@ -985,10 +988,14 @@ public class TimeUnit
 		int addTimeUnit = TUNIT_MAP.get(checkTimeIndex-1);
 		c.add(addTimeUnit, 1);
 		
-		_tp.tunit[checkTimeIndex - 1] = c.get(TUNIT_MAP.get(checkTimeIndex - 1));
-		if(TUNIT_MAP.get(checkTimeIndex - 1) == Calendar.MONTH){
-			++_tp.tunit[checkTimeIndex - 1];
+//		_tp.tunit[checkTimeIndex - 1] = c.get(TUNIT_MAP.get(checkTimeIndex - 1));
+		for(int i = 0; i < checkTimeIndex; i++){
+			_tp.tunit[i] = c.get(TUNIT_MAP.get(i));
+			if(TUNIT_MAP.get(i) == Calendar.MONTH){
+				++_tp.tunit[i];
+			}
 		}
+		
 	}
 	
 	/**

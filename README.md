@@ -88,29 +88,29 @@ public class TimeAnalyseTest {
 		System.out.println(DateUtil.formatDateDefault(unit[1].getTime()) + "-" + unit[1].getIsAllDayTime());
 		
 		//新闻随机抽取长句识别（2016年6月7日新闻,均以当日0点为基准时间计算）
-                //例1
-	        normalizer.parse("昨天上午，第八轮中美战略与经济对话气候变化问题特别联合会议召开。中国气候变化事务特别代表解振华表示，今年中美两国在应对气候变化多边进程中政策对话的重点任务，是推动《巴黎协定》尽早生效。", "2016-06-07-00-00-00");
-	        unit = normalizer.getTimeUnit();
-	        System.out.println("昨天上午，第八轮中美战略与经济对话气候变化问题特别联合会议召开。中国气候变化事务特别代表解振华表示，今年中美两国在应对气候变化多边进程中政策对话的重点任务，是推动《巴黎协定》尽早生效。");
-	        for(int i = 0; i < unit.length; i++){
-	            System.out.println("时间文本:"+unit[i].Time_Expression +",对应时间:"+ DateUtil.formatDateDefault(unit[i].getTime()));
-	        }
-	         
-	        //例2
-	        normalizer.parse("《辽宁日报》今日报道，6月3日辽宁召开省委常委扩大会，会议从下午两点半开到六点半，主要议题为：落实中央巡视整改要求。", "2016-06-07-00-00-00");
-	        unit = normalizer.getTimeUnit();
-	        System.out.println("《辽宁日报》今日报道，6月3日辽宁召开省委常委扩大会，会议从下午两点半开到六点半，主要议题为：落实中央巡视整改要求。");
-	        for(int i = 0; i < unit.length; i++){
-	            System.out.println("时间文本:"+unit[i].Time_Expression +",对应时间:"+ DateUtil.formatDateDefault(unit[i].getTime()));
-	        }
-	         
-	        //例3
-	        normalizer.parse("去年11月起正式实施的刑法修正案（九）中明确，在法律规定的国家考试中，组织作弊的将入刑定罪，最高可处七年有期徒刑。另外，本月刚刚开始实施的新版《教育法》中也明确...", "2016-06-07-00-00-00");
-	        unit = normalizer.getTimeUnit();
-	        System.out.println("去年11月起正式实施的刑法修正案（九）中明确，在法律规定的国家考试中，组织作弊的将入刑定罪，最高可处七年有期徒刑。另外，本月刚刚开始实施的新版《教育法》中也明确...");
-	        for(int i = 0; i < unit.length; i++){
-	            System.out.println("时间文本:"+unit[i].Time_Expression +",对应时间:"+ DateUtil.formatDateDefault(unit[i].getTime()));
-	        }
+		//例1
+		normalizer.parse("昨天上午，第八轮中美战略与经济对话气候变化问题特别联合会议召开。中国气候变化事务特别代表解振华表示，今年中美两国在应对气候变化多边进程中政策对话的重点任务，是推动《巴黎协定》尽早生效。", "2016-06-07-00-00-00");
+		unit = normalizer.getTimeUnit();
+		System.out.println("昨天上午，第八轮中美战略与经济对话气候变化问题特别联合会议召开。中国气候变化事务特别代表解振华表示，今年中美两国在应对气候变化多边进程中政策对话的重点任务，是推动《巴黎协定》尽早生效。");
+		for(int i = 0; i < unit.length; i++){
+		    System.out.println("时间文本:"+unit[i].Time_Expression +",对应时间:"+ DateUtil.formatDateDefault(unit[i].getTime()));
+		}
+		 
+		//例2
+		normalizer.parse("《辽宁日报》今日报道，6月3日辽宁召开省委常委扩大会，会议从下午两点半开到六点半，主要议题为：落实中央巡视整改要求。", "2016-06-07-00-00-00");
+		unit = normalizer.getTimeUnit();
+		System.out.println("《辽宁日报》今日报道，6月3日辽宁召开省委常委扩大会，会议从下午两点半开到六点半，主要议题为：落实中央巡视整改要求。");
+		for(int i = 0; i < unit.length; i++){
+		    System.out.println("时间文本:"+unit[i].Time_Expression +",对应时间:"+ DateUtil.formatDateDefault(unit[i].getTime()));
+		}
+		 
+		//例3
+		normalizer.parse("去年11月起正式实施的刑法修正案（九）中明确，在法律规定的国家考试中，组织作弊的将入刑定罪，最高可处七年有期徒刑。另外，本月刚刚开始实施的新版《教育法》中也明确...", "2016-06-07-00-00-00");
+		unit = normalizer.getTimeUnit();
+		System.out.println("去年11月起正式实施的刑法修正案（九）中明确，在法律规定的国家考试中，组织作弊的将入刑定罪，最高可处七年有期徒刑。另外，本月刚刚开始实施的新版《教育法》中也明确...");
+		for(int i = 0; i < unit.length; i++){
+		    System.out.println("时间文本:"+unit[i].Time_Expression +",对应时间:"+ DateUtil.formatDateDefault(unit[i].getTime()));
+		}
 	}
 	
 	/**
@@ -133,7 +133,7 @@ public class TimeAnalyseTest {
 ```
 <br>
 
-在`2016年6月7日9:44`測試，结果如下：
+在`2016年6月7日9:44`执行測試，结果如下：
 
 
 Hi，all。下周一下午三点开会
@@ -180,7 +180,9 @@ Hi，all。下周一下午三点开会
 时间文本:本月,  对应时间:2016-06-01 00:00:00
 
 
+<br/>
+<br/>
+如果您使用并有意见和建议，欢迎在Issue和我交流。若觉得好用，你的star是对作者最好的支持。<br/>
 
-如果您使用并有意见和建议，欢迎在Issue和我交流。若觉得好用，你的star是对作者最好的支持。 
-Enjoy。** - shinyke**
+Enjoy ** - shinyke**
 

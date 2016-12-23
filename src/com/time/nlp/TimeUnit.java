@@ -742,13 +742,18 @@ public class TimeUnit
 			calendar.add(Calendar.DATE, 3);
 		}
 		
-		rule="(?<=(上上(周|星期)))[1-7]";
+		rule="(?<=(上上(周|星期)))[1-7]?";
 		pattern=Pattern.compile(rule);
 		match=pattern.matcher(Time_Expression);
 		if(match.find())
 		{
 			flag[2] = true;
-			int week = Integer.parseInt(match.group());
+			int week;
+			try {
+				week = Integer.parseInt(match.group());
+			} catch (NumberFormatException e) {
+				week = 1;
+			}
 			if(week == 7)
 				week = 1;
 			else 
@@ -757,13 +762,18 @@ public class TimeUnit
 			calendar.set(Calendar.DAY_OF_WEEK, week);
 		}
 		
-		rule="(?<=((?<!上)上(周|星期)))[1-7]";
+		rule="(?<=((?<!上)上(周|星期)))[1-7]?";
 		pattern=Pattern.compile(rule);
 		match=pattern.matcher(Time_Expression);
 		if(match.find())
 		{
 			flag[2] = true;
-			int week = Integer.parseInt(match.group());
+			int week;
+			try {
+				week = Integer.parseInt(match.group());
+			} catch (NumberFormatException e) {
+				week = 1;
+			}
 			if(week == 7)
 				week = 1;
 			else 
@@ -772,13 +782,18 @@ public class TimeUnit
 			calendar.set(Calendar.DAY_OF_WEEK, week);
 		}
 		
-		rule="(?<=((?<!下)下(周|星期)))[1-7]";
+		rule="(?<=((?<!下)下(周|星期)))[1-7]?";
 		pattern=Pattern.compile(rule);
 		match=pattern.matcher(Time_Expression);
 		if(match.find())
 		{
 			flag[2] = true;
-			int week = Integer.parseInt(match.group());
+			int week;
+			try {
+				week = Integer.parseInt(match.group());
+			} catch (NumberFormatException e) {
+				week = 1;
+			}
 			if(week == 7)
 				week = 1;
 			else 
@@ -787,13 +802,18 @@ public class TimeUnit
 			calendar.set(Calendar.DAY_OF_WEEK, week);
 		}
 		
-		rule="(?<=(下下(周|星期)))[1-7]";
+		rule="(?<=(下下(周|星期)))[1-7]?";
 		pattern=Pattern.compile(rule);
 		match=pattern.matcher(Time_Expression);
 		if(match.find())
 		{
 			flag[2] = true;
-			int week = Integer.parseInt(match.group());
+			int week;
+			try {
+				week = Integer.parseInt(match.group());
+			} catch (NumberFormatException e) {
+				week = 1;
+			}
 			if(week == 7)
 				week = 1;
 			else 
@@ -802,13 +822,18 @@ public class TimeUnit
 			calendar.set(Calendar.DAY_OF_WEEK, week);
 		}
 		
-		rule="(?<=((?<!(上|下))(周|星期)))[1-7]";
+		rule="(?<=((?<!(上|下))(周|星期)))[1-7]?";
 		pattern=Pattern.compile(rule);
 		match=pattern.matcher(Time_Expression);
 		if(match.find())
 		{
 			flag[2] = true;
-			int week = Integer.parseInt(match.group());
+			int week;
+			try {
+				week = Integer.parseInt(match.group());
+			} catch (NumberFormatException e) {
+				week = 1;
+			}
 			if(week == 7)
 				week = 1;
 			else 

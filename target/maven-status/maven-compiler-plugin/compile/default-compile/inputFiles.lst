@@ -1,8 +1,8 @@
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\nlp\TimePoint.java
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\enums\RangeTimeEnum.java
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\util\CommonDateUtil.java
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\util\StringUtil.java
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\nlp\TimeUnit.java
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\nlp\TimeNormalizer.java
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\util\DateUtil.java
-E:\03_workspace\05_newEclipseWorkspace\Time-NLP\src\com\time\nlp\stringPreHandlingModule.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/nlp/stringPreHandlingModule.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/util/StringUtil.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/nlp/TimePoint.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/util/CommonDateUtil.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/enums/RangeTimeEnum.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/util/DateUtil.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/nlp/TimeUnit.java
+/Users/weiwei/workspace/github/Time-NLP/src/com/time/nlp/TimeNormalizer.java

@@ -981,7 +981,7 @@ public class TimeUnit {
         Calendar curC = Calendar.getInstance();
         if (this.normalizer.getTimeBase() != null) {
             String[] ini = this.normalizer.getTimeBase().split("-");
-            curC.set(Integer.valueOf(ini[0]).intValue(), Integer.valueOf(ini[1]).intValue(), Integer.valueOf(ini[2]).intValue()
+            curC.set(Integer.valueOf(ini[0]).intValue(), Integer.valueOf(ini[1]).intValue() - 1, Integer.valueOf(ini[2]).intValue()
                     , Integer.valueOf(ini[3]).intValue(), Integer.valueOf(ini[4]).intValue(), Integer.valueOf(ini[5]).intValue());
         }
         int curWeekday = curC.get(Calendar.DAY_OF_WEEK);

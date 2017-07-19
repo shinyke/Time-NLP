@@ -39,9 +39,9 @@ public class TimeAnalyseTest {
         TimeNormalizer normalizer = new TimeNormalizer(url.toURI().toString());
         normalizer.setPreferFuture(true);
         
-//        normalizer.parse("7月17日下午4点");// 严格时间格式的识别
+//        normalizer.parse("本周日到下周日提醒我跑步");// 严格时间格式的识别
 //        TimeUnit[] unit = normalizer.getTimeUnit();
-//        System.out.println("7月17日下午4点");
+//        System.out.println("本周日到下周日提醒我跑步");
 //        System.out.println(DateUtil.formatDateDefault(unit[0].getTime()) + "-" + unit[0].getIsAllDayTime());
         
         
@@ -117,9 +117,9 @@ public class TimeAnalyseTest {
 //        }
 
         //例3
-        normalizer.parse("去年11月起正式实施的刑法修正案（九）中明确，在法律规定的国家考试中，组织作弊的将入刑定罪，最高可处七年有期徒刑。另外，本月刚刚开始实施的新版《教育法》中也明确...", "2017-07-19-00-00-00");
+        normalizer.parse("本周日到下周日提醒我跑步", "2017-07-19-00-00-00");
         TimeUnit[] unit = normalizer.getTimeUnit();
-        System.out.println("去年11月起正式实施的刑法修正案（九）中明确，在法律规定的国家考试中，组织作弊的将入刑定罪，最高可处七年有期徒刑。另外，本月刚刚开始实施的新版《教育法》中也明确...");
+        System.out.println("本周日到下周日提醒我跑步");
         for(int i = 0; i < unit.length; i++){
             System.out.println("时间文本:"+unit[i].Time_Expression +",对应时间:"+ DateUtil.formatDateDefault(unit[i].getTime()));
         }

@@ -10,7 +10,7 @@
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
 			<resource>
-				<directory>resources</directory>
+				<directory>resource</directory>
 				<includes>
 					<include>**/*</include>
 				</includes>

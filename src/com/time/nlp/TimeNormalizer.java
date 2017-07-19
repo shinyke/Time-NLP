@@ -249,7 +249,6 @@ public class TimeNormalizer implements Serializable {
      * @param timeUnit
      * @return
      */
-    @SuppressWarnings("deprecation")
     public static TimeUnit[] filterTimeUnit(TimeUnit[] timeUnit) {
         if (timeUnit == null || timeUnit.length < 1) {
             return timeUnit;

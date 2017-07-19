@@ -1,10 +1,5 @@
 package com.time.nlp;
 
-import com.time.enums.RangeTimeEnum;
-import com.time.util.DateUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.time.enums.RangeTimeEnum;
 
 /**
  * <p>
@@ -22,7 +19,8 @@ import java.util.regex.Pattern;
  * @since 2016年5月4日
  */
 public class TimeUnit {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TimeUnit.class);
+	//有需要可使用
+	//private static final Logger LOGGER = LoggerFactory.getLogger(TimeUnit.class);
     /**
      * 目标字符串
      */

@@ -634,29 +634,6 @@ public class TimeUnit {
             calendar.add(Calendar.MONTH, 1);
         }
 
-        rule = "大前天";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            calendar.add(Calendar.DATE, -3);
-        }
-
-        rule = "(?<!大)前天";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            calendar.add(Calendar.DATE, -2);
-        }
-
-        rule = "昨";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            calendar.add(Calendar.DATE, -1);
-        }
 
         rule = "今(?!年)";
         pattern = Pattern.compile(rule);
@@ -674,118 +651,145 @@ public class TimeUnit {
             calendar.add(Calendar.DATE, 1);
         }
 
-        rule = "(?<!大)后天";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            calendar.add(Calendar.DATE, 2);
-        }
-
-        rule = "大后天";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            calendar.add(Calendar.DATE, 3);
-        }
-
-        rule = "(?<=(上上(周|星期)))[1-7]?";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            int week;
-            try {
-                week = Integer.parseInt(match.group());
-            } catch (NumberFormatException e) {
-                week = 1;
+        if(_tp.tunit[2]==-1){
+            rule = "大前天";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                calendar.add(Calendar.DATE, -3);
             }
-            if (week == 7)
-                week = 1;
-            else
-                week++;
-            calendar.add(Calendar.WEEK_OF_MONTH, -2);
-            calendar.set(Calendar.DAY_OF_WEEK, week);
+
+            rule = "(?<!大)前天";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                calendar.add(Calendar.DATE, -2);
+            }
+
+            rule = "(?<!大)后天";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                calendar.add(Calendar.DATE, 2);
+            }
+
+            rule = "大后天";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                calendar.add(Calendar.DATE, 3);
+            }
+
+            rule = "昨";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                calendar.add(Calendar.DATE, -1);
+            }
+
+            rule = "(?<=(上上(周|星期)))[1-7]?";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                int week;
+                try {
+                    week = Integer.parseInt(match.group());
+                } catch (NumberFormatException e) {
+                    week = 1;
+                }
+                if (week == 7)
+                    week = 1;
+                else
+                    week++;
+                calendar.add(Calendar.WEEK_OF_MONTH, -2);
+                calendar.set(Calendar.DAY_OF_WEEK, week);
+            }
+
+            rule = "(?<=((?<!上)上(周|星期)))[1-7]?";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                int week;
+                try {
+                    week = Integer.parseInt(match.group());
+                } catch (NumberFormatException e) {
+                    week = 1;
+                }
+                if (week == 7)
+                    week = 1;
+                else
+                    week++;
+                calendar.add(Calendar.WEEK_OF_MONTH, -1);
+                calendar.set(Calendar.DAY_OF_WEEK, week);
+            }
+
+            rule = "(?<=((?<!下)下(周|星期)))[1-7]?";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                int week;
+                try {
+                    week = Integer.parseInt(match.group());
+                } catch (NumberFormatException e) {
+                    week = 1;
+                }
+                if (week == 7)
+                    week = 1;
+                else
+                    week++;
+                calendar.add(Calendar.WEEK_OF_MONTH, 1);
+                calendar.set(Calendar.DAY_OF_WEEK, week);
+            }
+
+            rule = "(?<=(下下(周|星期)))[1-7]?";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                int week;
+                try {
+                    week = Integer.parseInt(match.group());
+                } catch (NumberFormatException e) {
+                    week = 1;
+                }
+                if (week == 7)
+                    week = 1;
+                else
+                    week++;
+                calendar.add(Calendar.WEEK_OF_MONTH, 2);
+                calendar.set(Calendar.DAY_OF_WEEK, week);
+            }
+
+            rule = "(?<=((?<!(上|下))(周|星期)))[1-7]?";
+            pattern = Pattern.compile(rule);
+            match = pattern.matcher(Time_Expression);
+            if (match.find()) {
+                flag[2] = true;
+                int week;
+                try {
+                    week = Integer.parseInt(match.group());
+                } catch (NumberFormatException e) {
+                    week = 1;
+                }
+                if (week == 7)
+                    week = 1;
+                else
+                    week++;
+                calendar.add(Calendar.WEEK_OF_MONTH, 0);
+                calendar.set(Calendar.DAY_OF_WEEK, week);
+                /**处理未来时间倾向 @author kexm*/
+                preferFutureWeek(week, calendar);
+            }
         }
 
-        rule = "(?<=((?<!上)上(周|星期)))[1-7]?";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            int week;
-            try {
-                week = Integer.parseInt(match.group());
-            } catch (NumberFormatException e) {
-                week = 1;
-            }
-            if (week == 7)
-                week = 1;
-            else
-                week++;
-            calendar.add(Calendar.WEEK_OF_MONTH, -1);
-            calendar.set(Calendar.DAY_OF_WEEK, week);
-        }
-
-        rule = "(?<=((?<!下)下(周|星期)))[1-7]?";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            int week;
-            try {
-                week = Integer.parseInt(match.group());
-            } catch (NumberFormatException e) {
-                week = 1;
-            }
-            if (week == 7)
-                week = 1;
-            else
-                week++;
-            calendar.add(Calendar.WEEK_OF_MONTH, 1);
-            calendar.set(Calendar.DAY_OF_WEEK, week);
-        }
-
-        rule = "(?<=(下下(周|星期)))[1-7]?";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            int week;
-            try {
-                week = Integer.parseInt(match.group());
-            } catch (NumberFormatException e) {
-                week = 1;
-            }
-            if (week == 7)
-                week = 1;
-            else
-                week++;
-            calendar.add(Calendar.WEEK_OF_MONTH, 2);
-            calendar.set(Calendar.DAY_OF_WEEK, week);
-        }
-
-        rule = "(?<=((?<!(上|下))(周|星期)))[1-7]?";
-        pattern = Pattern.compile(rule);
-        match = pattern.matcher(Time_Expression);
-        if (match.find()) {
-            flag[2] = true;
-            int week;
-            try {
-                week = Integer.parseInt(match.group());
-            } catch (NumberFormatException e) {
-                week = 1;
-            }
-            if (week == 7)
-                week = 1;
-            else
-                week++;
-            calendar.add(Calendar.WEEK_OF_MONTH, 0);
-            calendar.set(Calendar.DAY_OF_WEEK, week);
-            /**处理未来时间倾向 @author kexm*/
-            preferFutureWeek(week, calendar);
-        }
 
         String s = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(calendar.getTime());
         String[] time_fin = s.split("-");

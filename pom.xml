@@ -53,7 +53,7 @@
 	<repositories>
 		<repository>
 			<id>OSChina Central</id>
-			<url>http://maven.oschina.net/content/groups/public/</url>
+			<url>https://maven.oschina.net/content/groups/public/</url>
 		</repository>
 	</repositories>
 
